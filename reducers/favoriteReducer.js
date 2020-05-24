@@ -1,3 +1,4 @@
+import { ADD_FAV, DEL_FAV, GET_FAV } from "../actions/types"
 // Initial State
 const initialState = {
     favorites: [],
@@ -6,12 +7,20 @@ const initialState = {
 const favoriteReducer = (state = initialState, action) => {
     switch (action.type) {
         // Login
-        case 'LOGIN': {
+        case GET_FAV: {
             return {
                 // State
                 ...state,
                 // Redux Store
-                loggedIn: action.trueFalse,
+                favorites: action.favorites,
+            }
+        }
+        case ADD_FAV: {
+            return {
+                // State
+                ...state,
+                // Redux Store
+                favorites: this.state.favorites.concat(action.favorite),
             }
         }
         // Default

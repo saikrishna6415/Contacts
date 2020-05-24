@@ -2,23 +2,16 @@ import React from 'react'
 import { Text, View, StyleSheet, Button, PermissionsAndroid, ScrollView, ActivityIndicator } from 'react-native'
 import Contact from './Contact'
 import * as Contacts from 'expo-contacts';
+import { connect } from 'react-redux';
+import { getcontacts } from "../actions/contactsAction"
 
 class Allcontacts extends React.Component {
     _isMounted = false;
     constructor() {
         super()
         this.state = {
-            contacts: [],
-            Favorites: [],
             loading: true
         }
-    }
-
-    addfavorite = (contact) => {
-        console.log(contact)
-        // this.setState({
-        //     Favorites: this.state.Favorites.contact([contact])
-        // })
     }
 
 
@@ -31,14 +24,8 @@ class Allcontacts extends React.Component {
                     fields: [Contacts.PHONE_NUMBERS
                     ],
                 });
-
                 if (data.length > 0) {
-
-                    this.setState({
-                        contacts: data
-                    })
-                    // const contact = data[0];
-                    // console.log(contact);
+                    this.props.getcontacts(data)
                 }
             }
         }
@@ -47,8 +34,8 @@ class Allcontacts extends React.Component {
                 loading: !prevState.loading
             }))
         })
-
     }
+
     componentWillUnmount() {
         this._isMounted = false;
     }
@@ -62,7 +49,7 @@ class Allcontacts extends React.Component {
                         <View style={styles.container}>
                             <ActivityIndicator size="large" color="white" />
                         </View>
-                        : this.state.contacts.map(contact => {
+                        : this.props.contacts.map(contact => {
                             return (
                                 <Contact key={contact.id}
                                     contact={contact}
@@ -76,7 +63,18 @@ class Allcontacts extends React.Component {
     }
 
 }
-export default Allcontacts;
+
+// Map State To Props (Redux Store Passes State To Component)
+const mapStateToProps = (state) => {
+    // Redux Store --> Component
+    return {
+        contacts: state.contactReducer.contacts,
+        favorites: state.favoriteReducer.favorites,
+    };
+};
+
+export default connect(mapStateToProps, { getcontacts })(Allcontacts);
+
 const styles = StyleSheet.create({
     container: {
         marginTop: 200

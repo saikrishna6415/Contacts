@@ -1,3 +1,4 @@
+import { GET_CONTACTS } from '../actions/types'
 // Initial State
 const initialState = {
     contacts: [],
@@ -6,7 +7,7 @@ const initialState = {
 const contactReducer = (state = initialState, action) => {
     switch (action.type) {
         // Login
-        case 'GET_CONTACTS': {
+        case GET_CONTACTS: {
             return {
                 // State
                 ...state,

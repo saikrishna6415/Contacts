@@ -21,7 +21,8 @@ export default function App() {
             <Tab.Screen name="Contacts" component={Allcontacts} />
             <Tab.Screen name="Favorites" component={Favorites} />
           </Tab.Navigator>
-        </NavigationContainer>    </PersistGate>
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
 
   );
