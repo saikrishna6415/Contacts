@@ -23,7 +23,7 @@ class Contact extends Component {
                 <Text style={{ fontSize: 30, paddingTop: 40, paddingLeft: 5, paddingBottom: 10, color: "white" }}> {this.props.contact.name} </Text>
                 <TouchableOpacity>
                     <Icon name="star" style={{ paddingTop: 30, paddingRight: 5, fontSize: 40, color: color, marginRight: 10 }}
-                        onPress={this.handleFav}
+                        onPress={() => { this.handleFav(), this.state.addfav ? this.props.delfav(this.props.contact) : this.props.addfav(this.props.contact) }}
                     />
                 </TouchableOpacity>
 

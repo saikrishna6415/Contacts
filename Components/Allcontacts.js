@@ -4,6 +4,7 @@ import Contact from './Contact'
 import * as Contacts from 'expo-contacts';
 import { connect } from 'react-redux';
 import { getcontacts } from "../actions/contactsAction"
+import { addFavorite } from "../actions/favoriteActions"
 
 class Allcontacts extends React.Component {
     _isMounted = false;
@@ -35,6 +36,14 @@ class Allcontacts extends React.Component {
             }))
         })
     }
+    addfavorite = (data) => {
+        console.log("add", data)
+    }
+    delfavorite = (data) => {
+        console.log("delete", data)
+    }
+
+
 
     componentWillUnmount() {
         this._isMounted = false;
@@ -54,6 +63,7 @@ class Allcontacts extends React.Component {
                                 <Contact key={contact.id}
                                     contact={contact}
                                     addfav={this.addfavorite}
+                                    delfav={this.delfavorite}
                                 />
                             )
                         })}
