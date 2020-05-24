@@ -9,8 +9,6 @@ class Favorites extends Component {
         super()
         this.state = {
             loading: true,
-            favorites: [{ "id": 1, "name": "sai" },
-            { "id": 2, "name": "krishna" }]
         }
     }
     componentDidMount() {
@@ -21,9 +19,10 @@ class Favorites extends Component {
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "black", }}>
                 <ScrollView>
 
-                    {this.props.favorites.map(fav => {
+                    {this.props.favorites.map((fav, index) => {
+                        console.log('fav: ', fav)
                         return (
-                            <Favorite key={fav.id}
+                            <Favorite key={index}
                                 favorite={fav}
                             />
                         )

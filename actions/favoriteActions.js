@@ -20,6 +20,13 @@ export const addFavorite = (fav) => dispatch => {
     }
 };
 // del fav
-export const delFavorite = () => ({
-    type: DEL_FAV,
-});
+export const delFavorite = (fav) => dispatch => {
+    console.log("deleting fav", fav)
+    if (fav) {
+        dispatch({
+            type: DEL_FAV,
+            favorite: fav,
+            id: fav.id
+        })
+    }
+};

@@ -4,7 +4,7 @@ import Contact from './Contact'
 import * as Contacts from 'expo-contacts';
 import { connect } from 'react-redux';
 import { getcontacts } from "../actions/contactsAction"
-import { addFavorite } from "../actions/favoriteActions"
+import { addFavorite, delFavorite } from "../actions/favoriteActions"
 
 class Allcontacts extends React.Component {
     _isMounted = false;
@@ -37,10 +37,28 @@ class Allcontacts extends React.Component {
         })
     }
     addfavorite = (data) => {
-        console.log("add", data)
+        console.log("add", data.name)
+        console.log("add", data.id)
+        console.log("add", data.phoneNumbers[0].number)
+        const contct = {
+            "id": data.id,
+            "name": data.name,
+            "number": data.phoneNumbers[0].number
+        }
+
+        this.props.addFavorite(contct)
     }
     delfavorite = (data) => {
-        console.log("delete", data)
+        console.log("add", data.name)
+        console.log("add", data.id)
+        console.log("add", data.phoneNumbers[0].number)
+        const contct = {
+            "id": data.id,
+            "name": data.name,
+            "number": data.phoneNumbers[0].number
+        }
+
+        this.props.delFavorite(contct)
     }
 
 
@@ -58,9 +76,9 @@ class Allcontacts extends React.Component {
                         <View style={styles.container}>
                             <ActivityIndicator size="large" color="white" />
                         </View>
-                        : this.props.contacts.map(contact => {
+                        : this.props.contacts.map((contact, index) => {
                             return (
-                                <Contact key={contact.id}
+                                <Contact key={index}
                                     contact={contact}
                                     addfav={this.addfavorite}
                                     delfav={this.delfavorite}
@@ -79,11 +97,11 @@ const mapStateToProps = (state) => {
     // Redux Store --> Component
     return {
         contacts: state.contactReducer.contacts,
-        favorites: state.favoriteReducer.favorites,
+        // favorites: state.favoriteReducer.favorites,
     };
 };
 
-export default connect(mapStateToProps, { getcontacts })(Allcontacts);
+export default connect(mapStateToProps, { getcontacts, addFavorite, delFavorite })(Allcontacts);
 
 const styles = StyleSheet.create({
     container: {

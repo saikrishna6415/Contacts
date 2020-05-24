@@ -20,7 +20,17 @@ const favoriteReducer = (state = initialState, action) => {
                 // State
                 ...state,
                 // Redux Store
-                favorites: this.state.favorites.concat(action.favorite),
+                favorites: state.favorites.concat(action.favorite),
+            }
+        }
+        case DEL_FAV: {
+            return {
+                // State
+                ...state,
+                // Redux Store
+                favorites: state.favorites.filter(fav => {
+                    return fav.id !== action.id
+                }),
             }
         }
         // Default
