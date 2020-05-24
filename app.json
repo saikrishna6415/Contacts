@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "shopping-app",
-    "slug": "shopping-app",
+    "name": "contacts",
+    "slug": "contacts",
     "platforms": [
       "ios",
       "android",
