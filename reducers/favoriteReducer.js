@@ -1,7 +1,8 @@
-import { ADD_FAV, DEL_FAV, GET_FAV } from "../actions/types"
+import { ADD_FAV, DEL_FAV, GET_FAV, FAV_STATUS } from "../actions/types"
 // Initial State
 const initialState = {
     favorites: [],
+    status: false
 };
 // Reducers (Modifies The State And Returns A New State)
 const favoriteReducer = (state = initialState, action) => {
@@ -13,6 +14,14 @@ const favoriteReducer = (state = initialState, action) => {
                 ...state,
                 // Redux Store
                 favorites: action.favorites,
+            }
+        }
+        case FAV_STATUS: {
+            return {
+                // State
+                ...state,
+                // Redux Store
+                favorites: action.status,
             }
         }
         case ADD_FAV: {

@@ -16,8 +16,15 @@ class Contact extends Component {
         }))
     }
     render() {
+        let hasfav = this.props.fav.some(fav => {
+            // console.log(fav.id)
+            return fav.id === this.props.contact.id
+        })
+        if (hasfav) {
+            console.log("fav", hasfav)
+        }
         // console.log(this.props.addfav(this.props.contact))
-        var color = this.state.addfav ? "green" : "white"
+        var color = hasfav ? "green" : "white"
         return (
             <View style={styles.container}>
                 <Text style={{ fontSize: 30, paddingTop: 40, paddingLeft: 5, paddingBottom: 10, color: "white" }}> {this.props.contact.name} </Text>

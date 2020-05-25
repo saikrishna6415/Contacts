@@ -43,7 +43,8 @@ class Allcontacts extends React.Component {
         const contct = {
             "id": data.id,
             "name": data.name,
-            "number": data.phoneNumbers[0].number
+            "number": data.phoneNumbers[0].number,
+            "fav": true
         }
 
         this.props.addFavorite(contct)
@@ -55,7 +56,8 @@ class Allcontacts extends React.Component {
         const contct = {
             "id": data.id,
             "name": data.name,
-            "number": data.phoneNumbers[0].number
+            "number": data.phoneNumbers[0].number,
+            "fav": true
         }
 
         this.props.delFavorite(contct)
@@ -80,6 +82,7 @@ class Allcontacts extends React.Component {
                             return (
                                 <Contact key={index}
                                     contact={contact}
+                                    fav={this.props.favorites}
                                     addfav={this.addfavorite}
                                     delfav={this.delfavorite}
                                 />
@@ -97,7 +100,7 @@ const mapStateToProps = (state) => {
     // Redux Store --> Component
     return {
         contacts: state.contactReducer.contacts,
-        // favorites: state.favoriteReducer.favorites,
+        favorites: state.favoriteReducer.favorites,
     };
 };
 

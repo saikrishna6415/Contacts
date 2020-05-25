@@ -1,4 +1,4 @@
-import { ADD_FAV, DEL_FAV, GET_FAV } from "./types"
+import { ADD_FAV, DEL_FAV, GET_FAV, FAV_STATUS } from "./types"
 // get fav
 export const getFavorites = (data) => dispatch => {
     if (data) {
@@ -7,6 +7,13 @@ export const getFavorites = (data) => dispatch => {
             favorites: data
         })
     }
+};
+
+export const favStatus = (state) => dispatch => {
+    dispatch({
+        type: GET_FAV,
+        status: state
+    })
 };
 
 // add fav
