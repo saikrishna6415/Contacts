@@ -10,11 +10,7 @@ class Contact extends Component {
             addfav: false
         }
     }
-    handleFav = () => {
-        this.setState(prevState => ({
-            addfav: !prevState.addfav
-        }))
-    }
+
     render() {
         let hasfav = this.props.fav.some(fav => {
             // console.log(fav.id)
@@ -37,7 +33,7 @@ class Contact extends Component {
                 </View>
                 <TouchableOpacity>
                     <Icon name="star" style={{ paddingTop: 30, paddingRight: 5, fontSize: 40, color: color, marginRight: 10 }}
-                        onPress={() => { this.handleFav(), hasfav ? this.props.delfav(this.props.contact) : this.props.addfav(this.props.contact) }}
+                        onPress={() => { hasfav ? this.props.delfav(this.props.contact) : this.props.addfav(this.props.contact) }}
                     />
                 </TouchableOpacity>
             </View >
