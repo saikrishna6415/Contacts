@@ -33,11 +33,10 @@ class Contact extends Component {
                             <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> No number </Text>
 
                         }
-
                     </View>
                 </View>
                 <TouchableOpacity>
-                    <Icon name="star" style={{ paddingTop: 30, paddingRight: 5, fontSize: 40, color: color, marginRight: 10 }}
+                    <Icon name="star" style={{ paddingTop: 30, paddingRight: 5, fontSize: 45, color: color, marginRight: 10 }}
                         onPress={() => { hasfav ? this.props.delfav(this.props.contact) : this.props.addfav(this.props.contact) }}
                     />
                 </TouchableOpacity>
@@ -54,14 +53,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: 'black',
         borderBottomWidth: 1,
-        borderBottomColor: '#F0FFF0'
+        borderBottomColor: '#F0FFF0',
+        marginLeft: 10
     },
     contact: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         backgroundColor: 'black',
-        borderBottomWidth: 1,
-        borderBottomColor: '#F0FFF0'
+        // borderBottomWidth: 1,
+        // borderBottomColor: '#F0FFF0'
     }
 })

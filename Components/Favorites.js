@@ -16,18 +16,23 @@ class Favorites extends Component {
     }
     render() {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "black", }}>
-                <ScrollView>
 
-                    {this.props.favorites.map((fav, index) => {
-                        console.log('fav: ', fav)
-                        return (
-                            <Favorite key={index}
-                                favorite={fav}
-                            />
-                        )
-                    })}
-                </ScrollView>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "black", }}>
+                {this.props.favorites.length === 0 ?
+                    <Text style={{ color: "white", fontSize: 40 }}>No Favorites</Text>
+                    :
+                    <ScrollView>
+                        {this.props.favorites.map((fav, index) => {
+                            console.log('fav: ', fav)
+                            return (
+                                <Favorite key={index}
+                                    favorite={fav}
+                                />
+                            )
+                        })}
+                    </ScrollView>
+                }
+
             </View>
         );
     }

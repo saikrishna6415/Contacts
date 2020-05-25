@@ -37,26 +37,18 @@ class Allcontacts extends React.Component {
         })
     }
     addfavorite = (data) => {
-        console.log("add", data.name)
-        console.log("add", data.id)
-        console.log("add", data.phoneNumbers[0].number)
         const contct = {
             "id": data.id,
             "name": data.name,
-            "number": data.phoneNumbers[0].number,
             "fav": true
         }
 
         this.props.addFavorite(contct)
     }
     delfavorite = (data) => {
-        console.log("add", data.name)
-        console.log("add", data.id)
-        console.log("add", data.phoneNumbers[0].number)
         const contct = {
             "id": data.id,
             "name": data.name,
-            "number": data.phoneNumbers[0].number,
             "fav": true
         }
 
@@ -72,7 +64,7 @@ class Allcontacts extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, width: 400 }}>
+            <View style={{ flex: 1 }}>
                 <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
                     {this.state.loading ?
                         <View style={styles.container}>

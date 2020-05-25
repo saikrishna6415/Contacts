@@ -19,8 +19,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.mountblue.contacts",
-      "versionCode": 1
+      "package": "com.mountblue.contacts"
     }
   }
 }
