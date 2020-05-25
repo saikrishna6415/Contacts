@@ -1,4 +1,7 @@
-import { ADD_FAV, DEL_FAV, GET_FAV, FAV_STATUS } from "./types"
+import {
+    ADD_FAV, DEL_FAV,
+    // GET_FAV, FAV_STATUS 
+} from "./types"
 // get fav
 export const getFavorites = (data) => dispatch => {
     if (data) {
@@ -9,12 +12,12 @@ export const getFavorites = (data) => dispatch => {
     }
 };
 
-export const favStatus = (state) => dispatch => {
-    dispatch({
-        type: GET_FAV,
-        status: state
-    })
-};
+// export const favStatus = (state) => dispatch => {
+//     dispatch({
+//         type: GET_FAV,
+//         status: state
+//     })
+// };
 
 // add fav
 export const addFavorite = (fav) => dispatch => {
