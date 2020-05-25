@@ -17,8 +17,12 @@ export default function App() {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <NavigationContainer>
-          <Tab.Navigator style={{ marginTop: 40 }}>
-            <Tab.Screen name="Contacts" component={Allcontacts} />
+          <Tab.Navigator style={{ marginTop: 40 }}
+            tabBarOptions={{
+              labelStyle: { fontSize: 20, color: "white" },
+              style: { backgroundColor: 'black' },
+            }}>
+            <Tab.Screen name="Contacts" component={Allcontacts} t />
             <Tab.Screen name="Favorites" component={Favorites} />
           </Tab.Navigator>
         </NavigationContainer>

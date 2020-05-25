@@ -27,7 +27,12 @@ class Contact extends Component {
                     <Icon name="person" style={{ fontSize: 30, paddingTop: 40, paddingBottom: 10, marginLeft: 5, color: "white" }} />
                     <View style={{ marginLeft: 10 }}>
                         <Text style={{ fontSize: 20, paddingTop: 30, paddingLeft: 5, paddingBottom: 10, color: "white" }}> {this.props.contact.name} </Text>
-                        <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> {this.props.contact.phoneNumbers[0].number} </Text>
+                        {this.props.contact.phoneNumbers ?
+                            <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> {this.props.contact.phoneNumbers[0].number} </Text>
+                            :
+                            <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> No number </Text>
+
+                        }
 
                     </View>
                 </View>
