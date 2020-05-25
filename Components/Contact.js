@@ -27,13 +27,19 @@ class Contact extends Component {
         var color = hasfav ? "green" : "white"
         return (
             <View style={styles.container}>
-                <Text style={{ fontSize: 30, paddingTop: 40, paddingLeft: 5, paddingBottom: 10, color: "white" }}> {this.props.contact.name} </Text>
+                <View style={styles.contact}>
+                    <Icon name="person" style={{ fontSize: 30, paddingTop: 40, paddingBottom: 10, marginLeft: 5, color: "white" }} />
+                    <View style={{ marginLeft: 10 }}>
+                        <Text style={{ fontSize: 20, paddingTop: 30, paddingLeft: 5, paddingBottom: 10, color: "white" }}> {this.props.contact.name} </Text>
+                        <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> {this.props.contact.phoneNumbers[0].number} </Text>
+
+                    </View>
+                </View>
                 <TouchableOpacity>
                     <Icon name="star" style={{ paddingTop: 30, paddingRight: 5, fontSize: 40, color: color, marginRight: 10 }}
                         onPress={() => { this.handleFav(), this.state.addfav ? this.props.delfav(this.props.contact) : this.props.addfav(this.props.contact) }}
                     />
                 </TouchableOpacity>
-
             </View >
         )
     }
@@ -42,8 +48,17 @@ class Contact extends Component {
 export default Contact;
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        backgroundColor: 'black',
+        borderBottomWidth: 1,
+        borderBottomColor: '#F0FFF0'
+    },
+    contact: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
         backgroundColor: 'black',
         borderBottomWidth: 1,
         borderBottomColor: '#F0FFF0'
