@@ -18,7 +18,7 @@ class Contact extends Component {
         )
     }
     render() {
-        // console.log(this.props.route.params.route.params)
+        console.log(this.props)
         let hasfav = this.props.route.params.fav.some(fav => {
             // console.log(fav.id)
             return fav.id === this.props.route.params.contact.id
