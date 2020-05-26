@@ -5,6 +5,12 @@ import * as Contacts from 'expo-contacts';
 import { connect } from 'react-redux';
 import { getcontacts } from "../actions/contactsAction"
 import { addFavorite, delFavorite } from "../actions/favoriteActions"
+import contactInfo from './contactInfo'
+
+import { createStackNavigator } from '@react-navigation/stack'
+
+const contactStack = createStackNavigator()
+
 
 class Allcontacts extends React.Component {
     _isMounted = false;
@@ -72,12 +78,25 @@ class Allcontacts extends React.Component {
                         </View>
                         : this.props.contacts.map((contact, index) => {
                             return (
-                                <Contact key={index}
-                                    contact={contact}
-                                    fav={this.props.favorites}
-                                    addfav={this.addfavorite}
-                                    delfav={this.delfavorite}
-                                />
+                                <contactStack.Navigator>
+                                    <contactStack.Screen name="Contact"
+                                        component={Contact}
+                                        initialParams={{
+                                            key: index,
+                                            contact: contact,
+                                            fav: this.props.favorites,
+                                            addfav: this.addfavorite,
+                                            delfav: this.delfavorite
+                                        }} />
+                                    <contactStack.Screen name="contactInfo"
+                                        component={contactInfo} />
+                                </contactStack.Navigator>
+                                // <Contact key={index}
+                                //     contact={contact}
+                                //     fav={this.props.favorites}
+                                //     addfav={this.addfavorite}
+                                //     delfav={this.delfavorite}
+                                // />
                             )
                         })}
                 </ScrollView>

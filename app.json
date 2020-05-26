@@ -21,5 +21,17 @@
     "android": {
       "package": "com.mountblue.contacts"
     }
+  },
+  "hooks": {
+    "postPublish": [
+      {
+        "file": "sentry-expo/upload-sourcemaps",
+        "config": {
+          "organization": "saikrishna",
+          "project": "contacts",
+          "authToken": "801eefe388be4af6b5317fa0f66125fe6ade8fd648f04bcbb46750638083e484"
+        }
+      }
+    ]
   }
 }

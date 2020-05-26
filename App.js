@@ -5,12 +5,21 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import Allcontacts from './Components/Allcontacts'
 import Favorites from './Components/Favorites'
 
+
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 
 import { store, persistor } from './store/store';
 
+import * as Sentry from 'sentry-expo';
+
+// Sentry.init({
+//   dsn: 'https://7f24c49241204411969cc98552e688ab@o397658.ingest.sentry.io/5253304',
+//   enableInExpoDevelopment: true,
+//   debug: true,
+// });
 const Tab = createMaterialTopTabNavigator();
+
 
 export default function App() {
   return (
