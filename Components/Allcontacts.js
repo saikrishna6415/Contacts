@@ -8,9 +8,7 @@ import { addFavorite, delFavorite } from "../actions/favoriteActions"
 import contactInfo from './contactInfo'
 import { Icon } from 'native-base'
 
-import { createStackNavigator } from '@react-navigation/stack'
 
-const contactStack = createStackNavigator()
 
 
 class Allcontacts extends React.Component {
@@ -70,6 +68,7 @@ class Allcontacts extends React.Component {
     }
 
     render() {
+        // console.log("props", this.props.navigation)
         // var allcontacts = this.props.contacts.map((contact, index) => {
         //     return (
 
@@ -93,35 +92,47 @@ class Allcontacts extends React.Component {
         return (
 
             <View style={{ flex: 1, backgroundColor: "black" }}>
-                <FlatList
-                    data={this.props.contacts}
-                    renderItem={({ item }) => {
-                        let hasfav = this.props.favorites.some(fav => {
-                            // console.log(fav.id)
-                            return fav.id === item.id
-                        })
-                        var color = hasfav ? "green" : "white"
-                        return (
-                            <View style={styles.container}>
-                                <View style={styles.contact}>
-                                    <Icon name="person" style={{ fontSize: 30, paddingTop: 40, paddingBottom: 10, marginLeft: 5, color: "white" }} />
-                                    <View style={{ marginLeft: 10 }}>
-                                        <TouchableOpacity>
-                                            <Text style={{ fontSize: 20, paddingTop: 30, paddingLeft: 5, paddingBottom: 10, color: "white" }}> {item.name} </Text>
-                                            {item.phoneNumbers ?
-                                                <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> {item.phoneNumbers[0].number} </Text>
-                                                :
-                                                <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> No number </Text>
-                                            }
-                                        </TouchableOpacity>
+                {this.state.loading ?
+                    <View style={{ marginTop: 300 }}>
+                        <ActivityIndicator size="large" color="white" />
+                    </View>
+                    :
+                    <FlatList
+                        data={this.props.contacts}
+                        renderItem={({ item }) => {
+                            let hasfav = this.props.favorites.some(fav => {
+                                // console.log(fav.id)
+                                return fav.id === item.id
+                            })
+                            var color = hasfav ? "green" : "white"
+
+                            return (
+                                <View style={styles.container}>
+                                    <View style={styles.contact}>
+                                        <Icon name="person" style={{ fontSize: 30, paddingTop: 40, paddingBottom: 10, marginLeft: 5, color: "white" }} />
+                                        <View style={{ marginLeft: 10 }}>
+                                            <TouchableOpacity>
+                                                <Text style={{ fontSize: 20, paddingTop: 30, paddingLeft: 5, paddingBottom: 10, color: "white" }}
+                                                    onPress={() => this.props.navigation.navigate('contactInfo', {
+                                                        name: item.name,
+                                                        contactNumber: item.phoneNumbers ? item.phoneNumbers[0].number : "No Number"
+                                                    })}> {item.name} </Text>
+                                                {item.phoneNumbers ?
+                                                    <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> {item.phoneNumbers[0].number} </Text>
+                                                    :
+                                                    <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> No number </Text>
+                                                }
+                                            </TouchableOpacity>
+                                        </View>
                                     </View>
+                                    <Icon name="star" style={{ paddingTop: 30, paddingRight: 5, fontSize: 45, color: color, marginRight: 10 }}
+                                        onPress={() => { hasfav ? this.delfavorite(item) : this.addfavorite(item) }}
+                                    />
                                 </View>
-                                <Icon name="star" style={{ paddingTop: 30, paddingRight: 5, fontSize: 45, color: color, marginRight: 10 }}
-                                    onPress={() => { hasfav ? this.delfavorite(item) : this.addfavorite(item) }}
-                                />
-                            </View>
-                        )
-                    }} />
+                            )
+                        }} />
+                }
+
 
             </View >
         );

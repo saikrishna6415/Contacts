@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './store/store';
 
 import * as Sentry from 'sentry-expo';
+import stackScreen from './Components/stackScreen';
 
 // Sentry.init({
 //   dsn: 'https://7f24c49241204411969cc98552e688ab@o397658.ingest.sentry.io/5253304',
@@ -31,7 +32,7 @@ export default function App() {
               labelStyle: { fontSize: 20, color: "white" },
               style: { backgroundColor: 'black' },
             }}>
-            <Tab.Screen name="Contacts" component={Allcontacts} t />
+            <Tab.Screen name="Contacts" component={stackScreen} t />
             <Tab.Screen name="Favorites" component={Favorites} />
           </Tab.Navigator>
         </NavigationContainer>
