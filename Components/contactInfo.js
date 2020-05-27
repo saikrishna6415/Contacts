@@ -10,8 +10,12 @@ export default class contactInfo extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={{ fontSize: 20, paddingTop: 30, paddingLeft: 5, paddingBottom: 10, color: "white" }}> Name : {this.props.route.params.name} </Text>
-                <Text style={{ fontSize: 20, paddingTop: 30, paddingLeft: 5, paddingBottom: 10, color: "white" }}> Number : {this.props.route.params.contactNumber} </Text>
+                <Text style={{ fontSize: 20, paddingTop: 30, paddingLeft: 5, paddingBottom: 10, color: "white" }}> Name :
+                {this.props.route.params.name}
+                </Text>
+                <Text style={{ fontSize: 20, paddingTop: 30, paddingLeft: 5, paddingBottom: 10, color: "white" }}> Number :
+                 {this.props.route.params.contactNumber}
+                </Text>
 
             </View>
         )
