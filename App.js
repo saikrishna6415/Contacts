@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Allcontacts from './Components/Allcontacts'
+// import Allcontacts from './Components/Allcontacts'
 import Favorites from './Components/Favorites'
+
 
 
 import { PersistGate } from 'redux-persist/integration/react';
@@ -14,11 +15,11 @@ import { store, persistor } from './store/store';
 import * as Sentry from 'sentry-expo';
 import stackScreen from './Components/stackScreen';
 
-// Sentry.init({
-//   dsn: 'https://7f24c49241204411969cc98552e688ab@o397658.ingest.sentry.io/5253304',
-//   enableInExpoDevelopment: true,
-//   debug: true,
-// });
+Sentry.init({
+  dsn: 'https://7f24c49241204411969cc98552e688ab@o397658.ingest.sentry.io/5253304',
+  enableInExpoDevelopment: true,
+  debug: true,
+});
 const Tab = createMaterialTopTabNavigator();
 
 

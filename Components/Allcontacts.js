@@ -1,14 +1,12 @@
 import React from 'react'
 import { Text, View, StyleSheet, Button, PermissionsAndroid, ScrollView, TouchableOpacity, ActivityIndicator, TouchableHighlight, FlatList } from 'react-native'
-import Contact from './Contact'
 import * as Contacts from 'expo-contacts';
 import { connect } from 'react-redux';
 import { getcontacts } from "../actions/contactsAction"
 import { addFavorite, delFavorite } from "../actions/favoriteActions"
 import contactInfo from './contactInfo'
 import { Icon } from 'native-base'
-
-
+import DoubleClick from 'react-native-double-click';
 
 
 class Allcontacts extends React.Component {
@@ -19,7 +17,6 @@ class Allcontacts extends React.Component {
             loading: true
         }
     }
-
 
     componentDidMount() {
         this._isMounted = true;
@@ -68,29 +65,7 @@ class Allcontacts extends React.Component {
     }
 
     render() {
-        // console.log("props", this.props.navigation)
-        // var allcontacts = this.props.contacts.map((contact, index) => {
-        //     return (
-
-        //         <Contact key={index}
-        //             contact={contact}
-        //             fav={this.props.favorites}
-        //             addfav={this.addfavorite}
-        //             delfav={this.delfavorite}
-        //         />
-        //     )
-        // })
-        // let hasfav = this.props.fav.some(fav => {
-        //     // console.log(fav.id)
-        //     return fav.id === this.props.contact.id
-        // })
-        // if (hasfav) {
-        //     console.log("fav", hasfav)
-        // }
-        // console.log(this.props.route.params.addfav(this.props.route.params.contact))
-        // var color = true ? "green" : "white"
         return (
-
             <View style={{ flex: 1, backgroundColor: "black" }}>
                 {this.state.loading ?
                     <View style={{ marginTop: 300 }}>
@@ -107,27 +82,30 @@ class Allcontacts extends React.Component {
                             var color = hasfav ? "green" : "white"
 
                             return (
-                                <View style={styles.container}>
-                                    <View style={styles.contact}>
-                                        <Icon name="person" style={{ fontSize: 30, paddingTop: 40, paddingBottom: 10, marginLeft: 5, color: "white" }} />
-                                        <View style={{ marginLeft: 10 }}>
-                                            <TouchableOpacity>
+                                <View >
+                                    <DoubleClick style={styles.container} onClick={() => this.props.navigation.navigate('contactInfo', {
+                                        name: item.name,
+                                        contactNumber: item.phoneNumbers ? item.phoneNumbers[0].number : "No Number"
+                                    })}>
+                                        <View style={styles.contact}>
+
+                                            <Icon name="person" style={{ fontSize: 30, paddingTop: 40, paddingBottom: 10, marginLeft: 5, color: "white" }} />
+                                            <View style={{ marginLeft: 10 }}>
+                                                {/* <DoubleClick   > */}
                                                 <Text style={{ fontSize: 20, paddingTop: 30, paddingLeft: 5, paddingBottom: 10, color: "white" }}
-                                                    onPress={() => this.props.navigation.navigate('contactInfo', {
-                                                        name: item.name,
-                                                        contactNumber: item.phoneNumbers ? item.phoneNumbers[0].number : "No Number"
-                                                    })}> {item.name} </Text>
+                                                > {item.name} </Text>
                                                 {item.phoneNumbers ?
                                                     <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> {item.phoneNumbers[0].number} </Text>
                                                     :
                                                     <Text style={{ marginLeft: 10, color: "white", paddingBottom: 10 }}> No number </Text>
                                                 }
-                                            </TouchableOpacity>
+                                            </View>
+
                                         </View>
-                                    </View>
-                                    <Icon name="star" style={{ paddingTop: 30, paddingRight: 5, fontSize: 45, color: color, marginRight: 10 }}
-                                        onPress={() => { hasfav ? this.delfavorite(item) : this.addfavorite(item) }}
-                                    />
+                                        <Icon name="star" style={{ paddingTop: 30, paddingRight: 5, fontSize: 45, color: color, marginRight: 10 }}
+                                            onPress={() => { hasfav ? this.delfavorite(item) : this.addfavorite(item) }}
+                                        />
+                                    </DoubleClick>
                                 </View>
                             )
                         }} />

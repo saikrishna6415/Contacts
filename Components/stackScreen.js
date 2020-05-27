@@ -7,13 +7,27 @@ import contactInfo from './contactInfo'
 const contactStack = createStackNavigator()
 
 export default class stackScreen extends Component {
+    constructor() {
+        super()
+    }
     render() {
         return (
-            <contactStack.Navigator>
-                <contactStack.Screen name="AllContacts" component={Allcontacts} />
-                <contactStack.Screen name="contactInfo" component={contactInfo} />
+            <contactStack.Navigator >
+                <contactStack.Screen
+                    options={{ headerShown: false }} name="AllContacts" component={Allcontacts} />
+                <contactStack.Screen name="contactInfo" options={{
+
+                    headerStyle: {
+                        backgroundColor: "white"
+                    },
+                    headerTitleStyle: {
+                        color: "black"
+                    }
+                }}
+                    component={contactInfo} />
             </contactStack.Navigator>
 
         )
     }
 }
+

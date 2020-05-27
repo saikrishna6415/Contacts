@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
-import Favorite from "./Favorite"
+import { Text, View, StyleSheet, ScrollView, FlatList } from 'react-native'
 import { connect } from 'react-redux';
 import { getFavorites } from '../actions/favoriteActions'
+import { Icon } from 'native-base'
+
 
 class Favorites extends Component {
     constructor() {
@@ -11,28 +12,23 @@ class Favorites extends Component {
             loading: true,
         }
     }
-    componentDidMount() {
-        // this.props.getFavorites()
-    }
     render() {
         return (
-
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "black", }}>
                 {this.props.favorites.length === 0 ?
                     <Text style={{ color: "white", fontSize: 40 }}>No Favorites</Text>
                     :
-                    <ScrollView>
-                        {this.props.favorites.map((fav, index) => {
-                            console.log('fav: ', fav)
+                    <FlatList
+                        data={this.props.favorites}
+                        renderItem={({ item }) => {
                             return (
-                                <Favorite key={index}
-                                    favorite={fav}
-                                />
+                                <View style={styles.container}>
+                                    <Icon name="person" style={{ fontSize: 30, paddingTop: 40, paddingLeft: 5, paddingBottom: 10, color: "white" }} />
+                                    <Text style={{ fontSize: 30, paddingTop: 35, paddingLeft: 30, paddingBottom: 10, color: "white" }}> {item.name} </Text>
+                                </View >
                             )
-                        })}
-                    </ScrollView>
+                        }} />
                 }
-
             </View>
         );
     }
@@ -47,3 +43,16 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { getFavorites })(Favorites)
+
+
+const styles = StyleSheet.create({
+    container: {
+        width: 380,
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        backgroundColor: 'black',
+        borderBottomWidth: 1,
+        borderBottomColor: '#F0FFF0',
+    }
+})
