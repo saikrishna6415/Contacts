@@ -10,10 +10,18 @@ const Tab = createMaterialTopTabNavigator()
 export default class tabScreen extends Component {
     constructor() {
         super()
+        this.state = {
+            loading: false
+        }
+    }
+    componentDidMount() {
+        this.setState({
+            loading: true
+        })
     }
     render() {
         return (
-            <Tab.Navigator style={{ marginTop: 40 }}
+            <Tab.Navigator
                 tabBarOptions={{
                     labelStyle: { fontSize: 20, color: "white" },
                     style: { backgroundColor: 'black' },

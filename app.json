@@ -2,7 +2,11 @@
   "expo": {
     "name": "contacts",
     "slug": "contacts",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon1.png",
@@ -14,13 +18,17 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "contacts"
     },
     "android": {
       "package": "com.mountblue.contacts"
-    }
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   },
   "hooks": {
     "postPublish": [
