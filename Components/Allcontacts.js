@@ -7,6 +7,7 @@ import { addFavorite, delFavorite } from "../actions/favoriteActions"
 import contactInfo from './contactInfo'
 import { Icon } from 'native-base'
 import DoubleClick from 'react-native-double-click';
+import Notification from "./Notification"
 
 
 class Allcontacts extends React.Component {
@@ -57,9 +58,15 @@ class Allcontacts extends React.Component {
 
         this.props.delFavorite(contct)
     }
-
-
-
+    handleClick = (item) => {
+        console.log("clicked", item.name)
+        Notification
+            .configure()
+            .localNotification({
+                title: "contact opened",
+                message: `${item.name}`
+            })
+    }
     componentWillUnmount() {
         this._isMounted = false;
     }
@@ -83,10 +90,13 @@ class Allcontacts extends React.Component {
 
                             return (
                                 <View >
-                                    <DoubleClick style={styles.container} onClick={() => this.props.navigation.navigate('contactInfo', {
-                                        name: item.name,
-                                        contactNumber: item.phoneNumbers ? item.phoneNumbers[0].number : "No Number"
-                                    })}>
+                                    <DoubleClick style={styles.container} onClick={() => {
+                                        this.props.navigation.navigate('contactInfo', {
+                                            name: item.name,
+                                            contactNumber: item.phoneNumbers ? item.phoneNumbers[0].number : "No Number"
+                                        })
+                                        this.handleClick(item)
+                                    }}>
                                         <View style={styles.contact}>
 
                                             <Icon name="person" style={{ fontSize: 30, paddingTop: 40, paddingBottom: 10, marginLeft: 5, color: "white" }} />
