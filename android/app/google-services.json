@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "65501395539",
+    "firebase_url": "https://contacts-1590739856848.firebaseio.com",
+    "project_id": "contacts-1590739856848",
+    "storage_bucket": "contacts-1590739856848.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65501395539:android:4e5d768a3b485a77d2e4a6",
+        "android_client_info": {
+          "package_name": "com.mountblue.contacts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65501395539-u164eo9k16jsh353jq6o7jrbc2qgqaq1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mountblue.contacts",
+            "certificate_hash": "cb97e5b35f22607f2f06d3192e499c8a051cf2f8"
+          }
+        },
+        {
+          "client_id": "65501395539-3e65tb6q4dh95c6ks4oumrrf9c0s05ae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOyeH6jrR50UkJLVsPoCczwX42W4ATTRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65501395539-3e65tb6q4dh95c6ks4oumrrf9c0s05ae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
