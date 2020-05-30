@@ -20,7 +20,6 @@ class Allcontacts extends React.Component {
     }
 
     componentDidMount() {
-        this._isMounted = true;
         const getcontacts = async () => {
             const { status } = await Contacts.requestPermissionsAsync();
             if (status === 'granted') {
@@ -67,9 +66,9 @@ class Allcontacts extends React.Component {
                 message: `${item.name}`
             })
     }
-    componentWillUnmount() {
-        this._isMounted = false;
-    }
+    // componentWillUnmount() {
+    //     this._isMounted = false;
+    // }
 
     render() {
         return (
