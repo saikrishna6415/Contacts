@@ -1,7 +1,7 @@
 import { GET_USER } from '../actions/types'
 // Initial State
 const initialState = {
-    userInfo: null
+    userInfo: null,
 };
 // Reducers (Modifies The State And Returns A New State)
 const userReducer = (state = initialState, action) => {

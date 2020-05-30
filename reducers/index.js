@@ -9,7 +9,7 @@ import userReducer from './userReducer'
 const rootReducer = combineReducers({
     contactReducer: contactReducer,
     favoriteReducer: favoriteReducer,
-    userReducer: userReducer,
+    userInfo: userReducer,
 });
 // Exports
 export default rootReducer;
